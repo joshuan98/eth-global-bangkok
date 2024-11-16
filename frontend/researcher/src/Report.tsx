@@ -1,8 +1,11 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import React, { useState } from "react";
+import Lottie from 'react-lottie-player';
 import { useNavigate } from "react-router-dom";
 import profileImage from './assets/profile.png'; // Import the profile image
 import reportImage from './assets/report.png';
+import successAnimation from './assets/success.json'; // Import your Lottie JSON file
+import successImage from './assets/success.png'; // Import success image
 import Loading from "./Loading"; // Import the Loading component
 
 interface ReportProps {
@@ -11,19 +14,84 @@ interface ReportProps {
 
 const Report: React.FC<ReportProps> = ({ logout }) => {
   const [loading, setLoading] = useState(false); // State to control loading
+  const [showSuccess, setShowSuccess] = useState(false); // State to control success display
   const navigate = useNavigate();
 
   const handleUploadClick = () => {
-    const link = document.createElement("a");
-    link.href = `./assets/report.csv`;
-    link.download = "report.csv";
-    link.click();
-  };
+    setLoading(true); // Start loading
 
+    setTimeout(() => {
+      setLoading(false); // Stop loading after 2 seconds
+      setShowSuccess(true); // Show success display
+
+      const link = document.createElement("a");
+      link.href = `./assets/report.csv`; // Path for public assets
+      link.download = "report.csv";
+      link.click();
+      setTimeout(() => setShowSuccess(false), 4000); // Hide success after 4 seconds
+    }, 1000); // 1 seconds delay for download simulation
+  };
 
   // Show the Loading component if loading is true
   if (loading) {
     return <Loading />;
+  }
+
+  // Show the success message and animation if showSuccess is true
+  if (showSuccess) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+          backgroundColor: '#f0f0f0',
+          padding: '20px',
+          animation: 'fadeInOut 5s ease-in-out', // Apply the fade animation
+        }}
+      >
+        {/* Success Lottie Animation */}
+        <Lottie
+          loop={true}
+          animationData={successAnimation}
+          play
+          style={{ width: 200, height: 200 }}
+        />
+
+        {/* Success Image */}
+        <Box
+          component="img"
+          src={successImage}
+          alt="Success"
+          sx={{
+            width: '150px',
+            height: '150px',
+            marginTop: 2,
+            borderRadius: '50%', // Makes the image circular
+            objectFit: 'cover', // Ensures the image scales well within the circular shape
+          }}
+        />
+
+        {/* Success Text */}
+        <Typography variant="h5" color="primary" fontWeight="bold" mt={2}>
+          Download Successful!
+        </Typography>
+
+        {/* Fade-in and Fade-out Animation */}
+        <style>
+          {`
+            @keyframes fadeInOut {
+              0% { opacity: 0; }
+              10% { opacity: 1; }
+              90% { opacity: 1; }
+              100% { opacity: 0; }
+            }
+          `}
+        </style>
+      </Box>
+    );
   }
 
   return (
