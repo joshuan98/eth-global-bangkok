@@ -5,15 +5,15 @@ import profileImage from './assets/profile.png'; // Import the profile image
 import walletImage from './assets/wallet.png';
 
 interface WalletProps {
-  sendTransaction: () => Promise<void>;
+  receive: () => Promise<void>;
   logout: () => Promise<void>;
 }
 
-const Wallet: React.FC<WalletProps> = ({ sendTransaction, logout }) => {
+const Wallet: React.FC<WalletProps> = ({ receive, logout }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    sendTransaction()
+    receive()
   };
 
   return (

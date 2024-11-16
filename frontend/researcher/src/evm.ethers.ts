@@ -133,7 +133,7 @@ export async function transferERC20Specific(
     const rpcUrl = "https://polygon-amoy.blockpi.network/v1/rpc/public";
     const chainId = 80002;
     const tokenAddress = "0x69FB88CC868e1bf99C88c2491c15d877086d6802";
-    const paymentReceiverAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B";
+    const paymentReceiverAddress = "0xa9180E071483Cfd6624fab015Eb8c684cF57DA12";
 
     const provider = new ethers.JsonRpcProvider(rpcUrl, chainId);
     const wallet = new ethers.Wallet(privateKey, provider);

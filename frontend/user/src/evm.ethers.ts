@@ -154,43 +154,48 @@ export default class EthereumRpc {
       return `Error: ${error}`;
     }
   }
+}
 
-  async redeemFromPaymentReceiverSpecific(
-    amount: string
-  ): Promise<string> {
-    try {
+export async function redeemFromPaymentReceiverSpecific(
+  amount: string
+): Promise<string> {
+  try {
+    console.log("here")
+    const privateKey = "";
+    const rpcUrl = "https://polygon-amoy.blockpi.network/v1/rpc/public";
+    const chainId = 80002;
+    const userAddress = "0xa9180E071483Cfd6624fab015Eb8c684cF57DA12";
+    const paymentReceiverAddress = "0xa9180E071483Cfd6624fab015Eb8c684cF57DA12";
 
-      const privateKey = "";
-      const rpcUrl = "https://polygon-amoy.blockpi.network/v1/rpc/public";
-      const chainId = 80002;
-      const userAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B";
-      const paymentReceiverAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B";
-  
-      // Connect to the specified RPC and create a wallet
-      const provider = new ethers.JsonRpcProvider(rpcUrl, chainId);
-      const wallet = new ethers.Wallet(privateKey, provider);
-  
-      // Define the ABI for the redeem function
-      const paymentReceiverAbi = [
-        "function redeem(address from, uint256 amount) public",
-      ];
-      const paymentReceiverContract = new ethers.Contract(
-        paymentReceiverAddress,
-        paymentReceiverAbi,
-        wallet
-      );
-  
-      // Convert the amount to Wei
-      const amountInWei = ethers.parseUnits(amount, 18);
-  
-      // Call the redeem function
-      const tx = await paymentReceiverContract.redeem(userAddress, amountInWei);
-      const receipt = await tx.wait();
-  
-      return `Redeem successful: ${receipt.transactionHash}`;
-    } catch (error: unknown) {
-      return `Error: ${error}`;
-    }
+    // Connect to the specified RPC and create a wallet
+    const provider = new ethers.JsonRpcProvider(rpcUrl, chainId);
+    const wallet = new ethers.Wallet(privateKey, provider);
+
+    // Define the ABI for the redeem function
+    const paymentReceiverAbi = [
+      "function redeem(address from, uint256 amount) public",
+    ];
+    const paymentReceiverContract = new ethers.Contract(
+      paymentReceiverAddress,
+      paymentReceiverAbi,
+      wallet
+    );
+
+    // Convert the amount to Wei
+    const amountInWei = ethers.parseUnits(amount, 18);
+
+    console.log("there")
+
+    // Call the redeem function
+    const tx = await paymentReceiverContract.redeem(userAddress, amountInWei);
+
+    console.log("zz")
+
+    const receipt = await tx.wait();
+
+    console.log("everywhere")
+    return `Redeem successful: ${receipt.transactionHash}`;
+  } catch (error: unknown) {
+    return `Error: ${error}`;
   }
-  
 }
