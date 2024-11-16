@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
-import Dashboard from "./Dashboard";
 import LandingPage from "./LandingPage";
+import Select from "./Select";
 
 // Import Single Factor Auth SDK for no redirect flow
 import { ADAPTER_EVENTS, CHAIN_NAMESPACES, IProvider, WEB3AUTH_NETWORK } from "@web3auth/base";
@@ -19,8 +19,12 @@ import { CredentialResponse, GoogleLogin, googleLogout } from "@react-oauth/goog
 import RPC from "./evm.ethers";
 
 import "./App.css";
+import Fields1 from "./Fields1";
+import Fields2 from "./Fields2";
 import Loading from "./Loading";
+import Upload from "./upload";
 import { shouldSupportPasskey } from "./utils";
+import Wallet from "./Wallet";
 
 const verifier = "w3a-sfa-web-google";
 
@@ -113,8 +117,8 @@ function Login() {
         idToken: idToken!,
       });
       setIsLoggingIn(false);
-      // Navigate to the dashboard after successful login
-      navigate("/dashboard");
+      // Navigate after successful login
+      navigate("/select");
     } catch (err) {
       // Single Factor Auth SDK throws an error if the user has already enabled MFA
       // One can use the Web3AuthNoModal SDK to handle this case
@@ -158,6 +162,7 @@ function Login() {
     }
     googleLogout();
     web3authSFAuth.logout();
+    navigate("/");
     return;
   };
 
@@ -401,15 +406,44 @@ function Login() {
         <Routes>
           <Route path="/" element={<LandingPage onSuccess={onSuccess} />} />
           <Route
-            path="/dashboard"
+            path="/select"
             element={
-              provider ? (
-                <Dashboard
-                  logout={logout}
-                />
-              ) : (
-                <LandingPage onSuccess={onSuccess} />
-              )
+              <Select
+                logout={logout}
+              />
+            }
+          />
+          <Route
+            path="/upload"
+            element={
+              <Upload
+                logout={logout}
+              />
+            }
+          />
+          <Route
+            path="/fields1"
+            element={
+              <Fields1
+                logout={logout}
+              />
+            }
+          />
+          <Route
+            path="/fields2"
+            element={
+              <Fields2
+                logout={logout}
+              />
+            }
+          />
+          <Route
+            path="/wallet"
+            element={
+              <Wallet
+                sendTransaction={sendTransaction}
+                logout={logout}
+              />
             }
           />
         </Routes>
