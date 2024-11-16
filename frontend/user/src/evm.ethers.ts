@@ -155,6 +155,7 @@ export default class EthereumRpc {
     }
   }
 
+
   async redeemFromPaymentReceiverSpecific(amount: string): Promise<string> {
     try {
       const privateKey = ""; 

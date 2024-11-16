@@ -16,7 +16,7 @@ import { CredentialResponse, GoogleLogin, googleLogout } from "@react-oauth/goog
 // RPC libraries for blockchain calls
 // import RPC from "./evm.web3";
 // import RPC from "./evm.viem";
-import RPC from "./evm.ethers";
+import RPC, { redeemFromPaymentReceiverSpecific } from "./evm.ethers";
 
 import "./App.css";
 import Fields1 from "./Fields1";
@@ -31,14 +31,14 @@ const verifier = "w3a-sfa-web-google";
 const clientId = "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"; // get from https://dashboard.web3auth.io
 
 const chainConfig = {
-  chainId: "80002", // Polygon mainnet chain ID
-  displayName: "Polygon A",
+  chainId: "0x89", // Polygon mainnet chain ID
+  displayName: "Polygon Mainnet",
   chainNamespace: CHAIN_NAMESPACES.EIP155,
   tickerName: "Polygon",
   ticker: "MATIC",
   decimals: 18,
-  rpcTarget: "https://polygon-amoy.infura.io/v3/", // RPC endpoint for Polygon
-  blockExplorerUrl: "https://amoy.polygonscan.com",
+  rpcTarget: "https://rpc.ankr.com/polygon", // RPC endpoint for Polygon
+  blockExplorerUrl: "https://polygonscan.com",
   logo: "https://cryptologos.cc/logos/polygon-matic-logo.png",
 };
 
@@ -308,6 +308,10 @@ function Login() {
     }
   }
 
+  const receive = async () => {
+    await redeemFromPaymentReceiverSpecific("1");
+  };
+
   const loginView = (
     <>
       <div className="flex-container">
@@ -441,7 +445,7 @@ function Login() {
             path="/wallet"
             element={
               <Wallet
-                sendTransaction={sendTransaction}
+                receive={receive}
                 logout={logout}
               />
             }

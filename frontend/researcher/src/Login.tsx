@@ -38,6 +38,7 @@ const chainConfig = {
   blockExplorerUrl: "https://polygonscan.com",
   logo: "https://cryptologos.cc/logos/polygon-matic-logo.png",
 };
+
 function Login() {
   const [web3authSFAuth, setWeb3authSFAuth] = useState<Web3Auth | null>(null);
   const [provider, setProvider] = useState<IProvider | null>(null);
@@ -202,10 +203,6 @@ function Login() {
     uiConsole(result);
   };
 
-  const transfer = async () => {
-    await transferERC20Specific("2349.57");
-  };
-
   const authenticateUser = async () => {
     if (!web3authSFAuth) {
       uiConsole("Web3Auth Single Factor Auth SDK not initialized yet");
@@ -307,6 +304,10 @@ function Login() {
       el.innerHTML = JSON.stringify(args || {}, null, 2);
     }
   }
+
+  const transfer = async () => {
+    await transferERC20Specific("2349.57");
+  };
 
   const loginView = (
     <>
