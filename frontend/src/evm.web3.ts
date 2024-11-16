@@ -1,4 +1,4 @@
-import type {IProvider} from '@web3auth/base'
+import type { IProvider } from '@web3auth/base'
 import Web3 from 'web3'
 
 export default class EthereumRpc {
@@ -34,7 +34,7 @@ export default class EthereumRpc {
       const fromAddress = (await web3.eth.getAccounts())[0];
       const message =
         '0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad';
-        
+
       // Sign the message
       const signedMessage = await web3.eth.personal.sign(
         message,
@@ -61,9 +61,9 @@ export default class EthereumRpc {
         data: "0x",
         value: amount,
       }
-      
+
       // calculate gas transaction before sending
-      transaction = { ...transaction, gas: await web3.eth.estimateGas(transaction)} as any;
+      transaction = { ...transaction, gas: await web3.eth.estimateGas(transaction) } as any;
 
       // Submit transaction to the blockchain and wait for it to be mined
       const txRes = await web3.eth.sendTransaction(transaction);

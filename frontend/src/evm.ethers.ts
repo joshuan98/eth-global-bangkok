@@ -85,9 +85,9 @@ export default class EthereumRpc {
         data: "0x",
         value: amount,
       }
-      
+
       // calculate gas transaction before sending
-      transaction = { ...transaction, gas: await provider.estimateGas(transaction)} as any;
+      transaction = { ...transaction, gas: await provider.estimateGas(transaction) } as any;
 
       // Submit transaction to the blockchain and wait for it to be mined
       const tx = await signer.sendTransaction(transaction);
