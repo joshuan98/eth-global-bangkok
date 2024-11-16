@@ -154,4 +154,43 @@ export default class EthereumRpc {
       return `Error: ${error}`;
     }
   }
+
+  async redeemFromPaymentReceiverSpecific(
+    amount: string
+  ): Promise<string> {
+    try {
+
+      const privateKey = "";
+      const rpcUrl = "https://polygon-amoy.blockpi.network/v1/rpc/public";
+      const chainId = 80002;
+      const userAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B";
+      const paymentReceiverAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B";
+  
+      // Connect to the specified RPC and create a wallet
+      const provider = new ethers.JsonRpcProvider(rpcUrl, chainId);
+      const wallet = new ethers.Wallet(privateKey, provider);
+  
+      // Define the ABI for the redeem function
+      const paymentReceiverAbi = [
+        "function redeem(address from, uint256 amount) public",
+      ];
+      const paymentReceiverContract = new ethers.Contract(
+        paymentReceiverAddress,
+        paymentReceiverAbi,
+        wallet
+      );
+  
+      // Convert the amount to Wei
+      const amountInWei = ethers.parseUnits(amount, 18);
+  
+      // Call the redeem function
+      const tx = await paymentReceiverContract.redeem(userAddress, amountInWei);
+      const receipt = await tx.wait();
+  
+      return `Redeem successful: ${receipt.transactionHash}`;
+    } catch (error: unknown) {
+      return `Error: ${error}`;
+    }
+  }
+  
 }
