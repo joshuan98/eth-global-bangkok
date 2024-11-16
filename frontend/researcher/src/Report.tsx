@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import profileImage from './assets/profile.png'; // Import the profile image
 import reportImage from './assets/report.png';
-// import csvFile from './assets/report.csv'; // Import the CSV file path
 import Loading from "./Loading"; // Import the Loading component
 
 interface ReportProps {
@@ -15,11 +14,12 @@ const Report: React.FC<ReportProps> = ({ logout }) => {
   const navigate = useNavigate();
 
   const handleUploadClick = () => {
-    // const link = document.createElement("a");
-    // link.href = csvFile;
-    // link.download = "report.csv"; // Set the desired file name
-    // link.click();
+    const link = document.createElement("a");
+    link.href = `./assets/report.csv`;
+    link.download = "report.csv";
+    link.click();
   };
+
 
   // Show the Loading component if loading is true
   if (loading) {
