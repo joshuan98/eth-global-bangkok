@@ -100,11 +100,11 @@ export default class EthereumRpc {
   }
 
   async transferERC20(
-    tokenAddress: string,
     paymentReceiverAddress: string,
     amount: string
   ): Promise<string> {
     try {
+      const tokenAddress = "0x69FB88CC868e1bf99C88c2491c15d877086d6802"
       const provider = new ethers.BrowserProvider(this.provider as IProvider);
       const signer = await provider.getSigner();
 
@@ -125,13 +125,15 @@ export default class EthereumRpc {
   }
 
   async redeemFromPaymentReceiver(
-    paymentReceiverAddress: string,
     userAddress: string,
     amount: string
   ): Promise<string> {
     try {
+      const paymentReceiverAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B"
       const provider = new ethers.BrowserProvider(this.provider as IProvider);
       const signer = await provider.getSigner();
+
+      const userAddress = await signer.getAddress();
 
       const paymentReceiverAbi = [
         "function redeem(address from, uint256 amount) public",
