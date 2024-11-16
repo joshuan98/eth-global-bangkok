@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Checkbox } from '@mui/material';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import selectImage from './assets/select.png';
@@ -9,29 +9,15 @@ interface SelectProps {
 }
 
 const Select: React.FC<SelectProps> = ({ logout }) => {
-  const [loading, setLoading] = useState(false); // Track loading state
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Handle files when dropped
-  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const files = Array.from(event.dataTransfer.files);
-
-    if (files.length > 0) {
-      setLoading(true);  // Show Loading component
-      setTimeout(() => {
-        setLoading(false);  // Hide Loading component after 2 seconds
-        navigate("/upload");  // Navigate to /upload
-      }, 2000);  // 2-second delay
-    }
-  };
-
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  };
+  // Number of rows and columns in the grid
+  const numRows = 3;
+  const numCols = 3;
 
   if (loading) {
-    return <Loading />; // Show Loading component when loading is true
+    return <Loading />;
   }
 
   return (
@@ -39,6 +25,7 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
       sx={{
         position: 'relative',
         width: '100%',
+        height: '100vh', // Full viewport height
         margin: 0,
         padding: 0,
         overflowX: 'hidden',
@@ -62,42 +49,33 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         </Button>
       </Box>
 
-      {/* Select Image */}
+      {/* Container with Background Image and Grid */}
       <Box
-        component="img"
-        src={selectImage}
-        alt="Landing"
         sx={{
           width: '100%',
-          height: 'auto',
-          display: 'block',
-        }}
-      />
-
-      {/* Drag-and-Drop Area */}
-      <Box
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-        sx={{
-          position: 'absolute',
-          top: '55%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '400px',
-          height: '200px',
-          border: '2px dashed #888',
-          borderRadius: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          backgroundColor: '#f0f0f0',
-          zIndex: 1,
+          height: '100%',
+          position: 'relative',
+          backgroundImage: `url(${selectImage})`,
+          backgroundSize: 'auto 100%', // Stretch image to fit
+          backgroundPosition: 'center',
+          display: 'grid',
+          gridTemplateRows: `repeat(${numRows}, 1fr)`,
+          gridTemplateColumns: `repeat(${numCols}, 1fr)`,
         }}
       >
-        <Typography variant="body1" color="textSecondary">
-          Drag and drop a file here to proceed
-        </Typography>
+        {Array.from({ length: numRows * numCols }).map((_, index) => (
+          <Box
+            key={index}
+            sx={{
+              border: '1px solid transparent', // Optional border for debugging
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Checkbox />
+          </Box>
+        ))}
       </Box>
     </Box>
   );

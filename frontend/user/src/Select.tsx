@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import selectImage from './assets/select.png';
@@ -9,7 +9,7 @@ interface SelectProps {
 }
 
 const Select: React.FC<SelectProps> = ({ logout }) => {
-  const [loading, setLoading] = useState(false); // Track loading state
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   // Handle files when dropped
@@ -18,11 +18,11 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
     const files = Array.from(event.dataTransfer.files);
 
     if (files.length > 0) {
-      setLoading(true);  // Show Loading component
+      setLoading(true);
       setTimeout(() => {
-        setLoading(false);  // Hide Loading component after 2 seconds
-        navigate("/upload");  // Navigate to /upload
-      }, 2000);  // 2-second delay
+        setLoading(false);
+        navigate("/upload");
+      }, 2000);
     }
   };
 
@@ -31,7 +31,7 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
   };
 
   if (loading) {
-    return <Loading />; // Show Loading component when loading is true
+    return <Loading />;
   }
 
   return (
@@ -44,13 +44,13 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         overflowX: 'hidden',
       }}
     >
-      {/* Logout Button */}
+      {/* Logout Button at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         <Button
@@ -62,7 +62,51 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         </Button>
       </Box>
 
-      {/* Select Image */}
+      {/* Top Left Container for Upload Documents and My Wallet Buttons */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '16px',
+          left: '250px',
+          zIndex: 2,
+          display: 'flex',
+          gap: '8px', // Space between buttons
+        }}
+      >
+        {/* Upload Documents Button */}
+        <Button
+          sx={{
+            backgroundColor: 'white',
+            color: 'black',
+            fontWeight: 'bold',
+            boxShadow: 'none',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+            },
+          }}
+          onClick={() => navigate("/select")}
+        >
+          Upload Documents
+        </Button>
+
+        {/* My Wallet Button */}
+        <Button
+          sx={{
+            backgroundColor: 'white',
+            color: 'black',
+            fontWeight: 'normal',
+            boxShadow: 'none',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+            },
+          }}
+          onClick={() => navigate("/wallet")}
+        >
+          My Wallet
+        </Button>
+      </Box>
+
+      {/* Background Image */}
       <Box
         component="img"
         src={selectImage}
@@ -74,31 +118,19 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         }}
       />
 
-      {/* Drag-and-Drop Area */}
+      {/* Invisible Drag-and-Drop Area */}
       <Box
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         sx={{
           position: 'absolute',
-          top: '55%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '400px',
-          height: '200px',
-          border: '2px dashed #888',
-          borderRadius: '8px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          backgroundColor: '#f0f0f0',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
           zIndex: 1,
         }}
-      >
-        <Typography variant="body1" color="textSecondary">
-          Drag and drop a file here to proceed
-        </Typography>
-      </Box>
+      />
     </Box>
   );
 };

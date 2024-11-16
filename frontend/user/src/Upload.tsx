@@ -35,13 +35,13 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
         overflowX: 'hidden',
       }}
     >
-      {/* Logout Button */}
+      {/* Logout Button at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         <Button
@@ -50,6 +50,50 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
           color="primary"
         >
           Logout
+        </Button>
+      </Box>
+
+      {/* Top Left Container for Upload Documents and My Wallet Buttons */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '16px',
+          left: '250px',
+          zIndex: 2,
+          display: 'flex',
+          gap: '8px', // Space between buttons
+        }}
+      >
+        {/* Upload Documents Button */}
+        <Button
+          sx={{
+            backgroundColor: 'white',
+            color: 'black',
+            fontWeight: 'bold',
+            boxShadow: 'none',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+            },
+          }}
+          onClick={() => navigate("/select")}
+        >
+          Upload Documents
+        </Button>
+
+        {/* My Wallet Button */}
+        <Button
+          sx={{
+            backgroundColor: 'white',
+            color: 'black',
+            fontWeight: 'normal',
+            boxShadow: 'none',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+            },
+          }}
+          onClick={() => navigate("/wallet")}
+        >
+          My Wallet
         </Button>
       </Box>
 
@@ -85,7 +129,7 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
             padding: '10px 20px', // Padding for size
             borderRadius: '8px', // Rounded corners
             fontWeight: 'bold',
-            fontSize: '16px', // Font size to match your example
+            fontSize: '32px', // Font size to match your example
             textTransform: 'none', // Keeps the text as "Upload" instead of uppercase
           }}
           onClick={handleUploadClick} // Call handleUploadClick on button click
