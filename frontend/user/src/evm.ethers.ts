@@ -98,4 +98,58 @@ export default class EthereumRpc {
       return error as undefined;
     }
   }
+
+  async transferERC20(
+    tokenAddress: string,
+    paymentReceiverAddress: string,
+    amount: string
+  ): Promise<string> {
+    try {
+      const provider = new ethers.BrowserProvider(this.provider as IProvider);
+      const signer = await provider.getSigner();
+
+      const erc20Abi = [
+        "function transfer(address recipient, uint256 amount) public returns (bool)",
+      ];
+      const tokenContract = new ethers.Contract(tokenAddress, erc20Abi, signer);
+
+      const amountInWei = ethers.parseUnits(amount, 18);
+
+      const tx = await tokenContract.transfer(paymentReceiverAddress, amountInWei);
+      const receipt = await tx.wait();
+
+      return `Transaction successful: ${receipt.transactionHash}`;
+    } catch (error: unknown) {
+      return `Error: ${error}`;
+    }
+  }
+
+  async redeemFromPaymentReceiver(
+    paymentReceiverAddress: string,
+    userAddress: string,
+    amount: string
+  ): Promise<string> {
+    try {
+      const provider = new ethers.BrowserProvider(this.provider as IProvider);
+      const signer = await provider.getSigner();
+
+      const paymentReceiverAbi = [
+        "function redeem(address from, uint256 amount) public",
+      ];
+      const paymentReceiverContract = new ethers.Contract(
+        paymentReceiverAddress,
+        paymentReceiverAbi,
+        signer
+      );
+
+      const amountInWei = ethers.parseUnits(amount, 18);
+
+      const tx = await paymentReceiverContract.redeem(userAddress, amountInWei);
+      const receipt = await tx.wait();
+
+      return `Redeem successful: ${receipt.transactionHash}`;
+    } catch (error: unknown) {
+      return `Error: ${error}`;
+    }
+  }
 }
