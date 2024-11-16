@@ -1,0 +1,68 @@
+{
+  "Demographic Data": [
+    "Age (Specify range: _____ )",
+    "Gender",
+    "Ethnicity",
+    "Geographic Location (Specify region/country: _____ )",
+    "Marital Status",
+    "Employment Status",
+    "Socioeconomic Status (e.g., income level, education level)"
+  ],
+  "General Health Data": [
+    "Body Mass Index (BMI)",
+    "Allergies",
+    "Past & Current Medication",
+    "Smoking Status",
+    "Alcohol Consumption",
+    "Recreational Drug Use",
+    "Physical Activity Levels"
+  ],
+  "Disease-Specific Data": [
+    "Cardiovascular Diseases (e.g., hypertension, heart disease)",
+    "Diabetes (Type 1/Type 2)",
+    "Respiratory Diseases (e.g., asthma, COPD)",
+    "Autoimmune Diseases (e.g., lupus, rheumatoid arthritis)",
+    "Mental Health Conditions (e.g., depression, anxiety)",
+    "Neurological Conditions (e.g., epilepsy, Parkinson's disease)",
+    "Cancer (Specify type: _____ )"
+  ],
+  "Genetic Data": [
+    "Genetic Test Results (e.g., BRCA mutations, whole genome sequencing)",
+    "Family History of Genetic Conditions (e.g., Huntington’s disease)"
+  ],
+  "Symptom Data": [
+    "Symptom Logs (Specify condition/symptom: _____ )"
+  ],
+  "Treatment Data": [
+    "Treatment History (e.g., surgeries, therapies)",
+    "Treatment Outcomes (e.g., efficacy, side effects)"
+  ],
+  "Lab Test Data": [
+    "Blood Test Results (Specify markers: _____ )",
+    "Urinalysis Results",
+    "Imaging Data (e.g., x-rays, MRIs, CT scans)",
+    "Biopsy Results",
+    "Other Diagnostic Test Results (Specify: _____ )",
+    "Employment Status",
+    "Socioeconomic Status (e.g., income level, education level)"
+  ],
+  "Device/Monitoring Data": [
+    "Wearable Device Data (e.g., Fitbit, Apple Watch)",
+    "Continuous Glucose Monitoring Data",
+    "Sleep Tracking Data",
+    "Heart Rate Variability (HRV)",
+    "Blood Oxygen Levels (SpO2)",
+    "Recreational Drug Use",
+    "Physical Activity Levels"
+  ],
+  "Lifestyle Data": [
+    "Diet/Nutrition Patterns",
+    "Exercise Habits",
+    "Environmental Factors (e.g., air quality, exposure to toxins)"
+  ],
+  "Rare Disease": [
+    "Rare Disease Diagnosis (Specify: _____ )",
+    "Known Disease Mutations (if applicable)",
+    "Symptoms Unique to Rare Disease"
+  ]
+}

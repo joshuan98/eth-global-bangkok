@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 import LandingPage from "./LandingPage";
+import Report from "./Report";
 import Select from "./Select";
 
 // Import Single Factor Auth SDK for no redirect flow
@@ -405,6 +406,14 @@ function Login() {
             path="/select"
             element={
               <Select
+                logout={logout}
+              />
+            }
+          />
+          <Route
+            path="/report"
+            element={
+              <Report
                 logout={logout}
               />
             }
