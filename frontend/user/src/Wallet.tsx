@@ -1,6 +1,7 @@
 import { Box, Button } from '@mui/material';
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import profileImage from './assets/profile.png'; // Import the profile image
 import walletImage from './assets/wallet.png';
 
 interface WalletProps {
@@ -25,15 +26,19 @@ const Wallet: React.FC<WalletProps> = ({ sendTransaction, logout }) => {
         overflowX: 'hidden',
       }}
     >
-      {/* Logout Button at the Top Right */}
+      {/* Logout Button and Profile Image at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
           zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px', // Space between logout button and profile image
         }}
       >
+        {/* Logout Button */}
         <Button
           onClick={logout}
           variant="contained"
@@ -41,6 +46,19 @@ const Wallet: React.FC<WalletProps> = ({ sendTransaction, logout }) => {
         >
           Logout
         </Button>
+
+        {/* Profile Image */}
+        <Box
+          component="img"
+          src={profileImage}
+          alt="Profile"
+          sx={{
+            width: '40px', // Adjust the size as needed
+            height: '40px',
+            borderRadius: '50%', // Circular shape
+            border: '2px solid #f0f0f0', // Optional border for visual separation
+          }}
+        />
       </Box>
 
       {/* Top Left Container for Upload Documents and My Wallet Buttons */}
@@ -103,8 +121,8 @@ const Wallet: React.FC<WalletProps> = ({ sendTransaction, logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          top: '210px', // Position from the bottom
-          left: '440px', // Position from the left
+          top: '230px', // Position from the bottom
+          left: '490px', // Position from the left
           zIndex: 2,
         }}
       >
@@ -112,8 +130,8 @@ const Wallet: React.FC<WalletProps> = ({ sendTransaction, logout }) => {
           onClick={handleClick}
           variant="outlined" // Use outlined variant
           sx={{
-            minWidth: '130px', // Wider for a pill shape
-            height: '40px', // Adjust height for pill-like appearance
+            minWidth: '150px', // Wider for a pill shape
+            height: '50px', // Adjust height for pill-like appearance
             backgroundColor: '#fff', // White background
             color: '#000', // Black text color
             borderColor: '#34D399', // Green outline

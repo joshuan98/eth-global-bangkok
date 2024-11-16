@@ -1,6 +1,7 @@
 import { Box, Button } from '@mui/material';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import profileImage from './assets/profile.png'; // Import the profile image
 import selectImage from './assets/select.png';
 import Loading from "./Loading";
 
@@ -44,15 +45,19 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         overflowX: 'hidden',
       }}
     >
-      {/* Logout Button at the Top Right */}
+      {/* Logout Button and Profile Image at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
           zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px', // Space between logout button and profile image
         }}
       >
+        {/* Logout Button */}
         <Button
           onClick={logout}
           variant="contained"
@@ -60,6 +65,19 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         >
           Logout
         </Button>
+
+        {/* Profile Image */}
+        <Box
+          component="img"
+          src={profileImage}
+          alt="Profile"
+          sx={{
+            width: '40px', // Adjust the size as needed
+            height: '40px',
+            borderRadius: '50%', // Circular shape
+            border: '2px solid #f0f0f0', // Optional border for visual separation
+          }}
+        />
       </Box>
 
       {/* Top Left Container for Upload Documents and My Wallet Buttons */}

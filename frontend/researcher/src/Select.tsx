@@ -2,6 +2,7 @@ import { Masonry } from '@mui/lab';
 import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import profileImage from './assets/profile.png'; // Import the profile image
 import selectImage from './assets/select.png';
 import data from './data.json';
 import Loading from "./Loading"; // Import the Loading component
@@ -63,15 +64,19 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         overflow: 'hidden',
       }}
     >
-      {/* Logout Button at the Top Right */}
+      {/* Logout Button and Profile Image at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
           zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px', // Space between logout button and profile image
         }}
       >
+        {/* Logout Button */}
         <Button
           onClick={logout}
           variant="contained"
@@ -79,6 +84,19 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
         >
           Logout
         </Button>
+
+        {/* Profile Image */}
+        <Box
+          component="img"
+          src={profileImage}
+          alt="Profile"
+          sx={{
+            width: '40px', // Adjust the size as needed
+            height: '40px',
+            borderRadius: '50%', // Circular shape
+            border: '2px solid #f0f0f0', // Optional border for visual separation
+          }}
+        />
       </Box>
 
       {/* Top Left Container for Upload Documents and My Wallet Buttons */}

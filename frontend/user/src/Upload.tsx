@@ -1,6 +1,7 @@
 import { Box, Button } from '@mui/material';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import profileImage from './assets/profile.png'; // Import the profile image
 import uploadImage from './assets/upload.png';
 import Loading from "./Loading"; // Import the Loading component
 
@@ -35,15 +36,19 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
         overflowX: 'hidden',
       }}
     >
-      {/* Logout Button at the Top Right */}
+      {/* Logout Button and Profile Image at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
           zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px', // Space between logout button and profile image
         }}
       >
+        {/* Logout Button */}
         <Button
           onClick={logout}
           variant="contained"
@@ -51,6 +56,19 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
         >
           Logout
         </Button>
+
+        {/* Profile Image */}
+        <Box
+          component="img"
+          src={profileImage}
+          alt="Profile"
+          sx={{
+            width: '40px', // Adjust the size as needed
+            height: '40px',
+            borderRadius: '50%', // Circular shape
+            border: '2px solid #f0f0f0', // Optional border for visual separation
+          }}
+        />
       </Box>
 
       {/* Top Left Container for Upload Documents and My Wallet Buttons */}
@@ -113,7 +131,7 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '180px', // Positioning the button near the bottom of the page
+          bottom: '190px', // Positioning the button near the bottom of the page
           left: '50%',
           transform: 'translateX(-50%)', // Center horizontally
           zIndex: 1,
@@ -123,11 +141,11 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
           variant="contained"
           sx={{
             height: '100px',
-            width: '310px',
+            width: '350px',
             backgroundColor: '#651FFF', // Purple background color
             color: '#fff', // White text color
             padding: '10px 20px', // Padding for size
-            borderRadius: '8px', // Rounded corners
+            borderRadius: '16px', // Rounded corners
             fontWeight: 'bold',
             fontSize: '32px', // Font size to match your example
             textTransform: 'none', // Keeps the text as "Upload" instead of uppercase

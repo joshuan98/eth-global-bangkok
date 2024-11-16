@@ -3,6 +3,7 @@ import { Box, Button } from '@mui/material';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import fields1Image from './assets/fields1.png';
+import profileImage from './assets/profile.png'; // Import the profile image
 import Loading from "./Loading"; // Import the Loading component
 
 interface Fields1Props {
@@ -36,15 +37,19 @@ const Fields1: React.FC<Fields1Props> = ({ logout }) => {
         overflowX: 'hidden',
       }}
     >
-      {/* Logout Button at the Top Right */}
+      {/* Logout Button and Profile Image at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
           zIndex: 2,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px', // Space between logout button and profile image
         }}
       >
+        {/* Logout Button */}
         <Button
           onClick={logout}
           variant="contained"
@@ -52,6 +57,19 @@ const Fields1: React.FC<Fields1Props> = ({ logout }) => {
         >
           Logout
         </Button>
+
+        {/* Profile Image */}
+        <Box
+          component="img"
+          src={profileImage}
+          alt="Profile"
+          sx={{
+            width: '40px', // Adjust the size as needed
+            height: '40px',
+            borderRadius: '50%', // Circular shape
+            border: '2px solid #f0f0f0', // Optional border for visual separation
+          }}
+        />
       </Box>
 
       {/* Top Left Container for Upload Documents and My Wallet Buttons */}
@@ -114,7 +132,7 @@ const Fields1: React.FC<Fields1Props> = ({ logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '450px', // Position from the bottom
+          bottom: '510px', // Position from the bottom
           right: '32px', // Position from the right
           zIndex: 2,
         }}
