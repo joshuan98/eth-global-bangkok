@@ -19,12 +19,8 @@ import { CredentialResponse, GoogleLogin, googleLogout } from "@react-oauth/goog
 import RPC from "./evm.ethers";
 
 import "./App.css";
-import Fields1 from "./Fields1";
-import Fields2 from "./Fields2";
 import Loading from "./Loading";
-import Upload from "./upload";
 import { shouldSupportPasskey } from "./utils";
-import Wallet from "./Wallet";
 
 const verifier = "w3a-sfa-web-google";
 
@@ -409,39 +405,6 @@ function Login() {
             path="/select"
             element={
               <Select
-                logout={logout}
-              />
-            }
-          />
-          <Route
-            path="/upload"
-            element={
-              <Upload
-                logout={logout}
-              />
-            }
-          />
-          <Route
-            path="/fields1"
-            element={
-              <Fields1
-                logout={logout}
-              />
-            }
-          />
-          <Route
-            path="/fields2"
-            element={
-              <Fields2
-                logout={logout}
-              />
-            }
-          />
-          <Route
-            path="/wallet"
-            element={
-              <Wallet
-                sendTransaction={sendTransaction}
                 logout={logout}
               />
             }

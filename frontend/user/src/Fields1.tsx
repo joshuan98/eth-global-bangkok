@@ -18,7 +18,7 @@ const Fields1: React.FC<Fields1Props> = ({ logout }) => {
     setTimeout(() => {
       setLoading(false); // Stop loading after 2 seconds
       navigate("/fields2"); // Navigate to the next page after 2 seconds
-    }, 2000);
+    }, 500);
   };
 
   // Show the Loading component if loading is true
@@ -36,13 +36,13 @@ const Fields1: React.FC<Fields1Props> = ({ logout }) => {
         overflowX: 'hidden',
       }}
     >
-      {/* Logout Button */}
+      {/* Logout Button at the Top Right */}
       <Box
         sx={{
           position: 'absolute',
           top: '16px',
           right: '32px',
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         <Button
@@ -51,6 +51,50 @@ const Fields1: React.FC<Fields1Props> = ({ logout }) => {
           color="primary"
         >
           Logout
+        </Button>
+      </Box>
+
+      {/* Top Left Container for Upload Documents and My Wallet Buttons */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '16px',
+          left: '250px',
+          zIndex: 2,
+          display: 'flex',
+          gap: '8px', // Space between buttons
+        }}
+      >
+        {/* Upload Documents Button */}
+        <Button
+          sx={{
+            backgroundColor: 'white',
+            color: 'black',
+            fontWeight: 'bold',
+            boxShadow: 'none',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+            },
+          }}
+          onClick={() => navigate("/select")}
+        >
+          Upload Documents
+        </Button>
+
+        {/* My Wallet Button */}
+        <Button
+          sx={{
+            backgroundColor: 'white',
+            color: 'black',
+            fontWeight: 'normal',
+            boxShadow: 'none',
+            '&:hover': {
+              backgroundColor: '#f0f0f0',
+            },
+          }}
+          onClick={() => navigate("/wallet")}
+        >
+          My Wallet
         </Button>
       </Box>
 
