@@ -1,15 +1,15 @@
 {
   "Demographic Data": [
-    "Age (Specify range: _____ )",
+    "Age",
     "Gender",
     "Ethnicity",
-    "Geographic Location (Specify region/country: _____ )",
+    "Geographic Location",
     "Marital Status",
     "Employment Status",
-    "Socioeconomic Status (e.g., income level, education level)"
+    "Socioeconomic Status"
   ],
   "General Health Data": [
-    "Body Mass Index (BMI)",
+    "Body Mass Index",
     "Allergies",
     "Past & Current Medication",
     "Smoking Status",
@@ -18,51 +18,49 @@
     "Physical Activity Levels"
   ],
   "Disease-Specific Data": [
-    "Cardiovascular Diseases (e.g., hypertension, heart disease)",
-    "Diabetes (Type 1/Type 2)",
-    "Respiratory Diseases (e.g., asthma, COPD)",
-    "Autoimmune Diseases (e.g., lupus, rheumatoid arthritis)",
-    "Mental Health Conditions (e.g., depression, anxiety)",
-    "Neurological Conditions (e.g., epilepsy, Parkinson's disease)",
-    "Cancer (Specify type: _____ )"
+    "Cardiovascular Diseases",
+    "Diabetes",
+    "Respiratory Diseases",
+    "Autoimmune Diseases",
+    "Mental Health Conditions",
+    "Neurological Conditions",
+    "Cancer"
   ],
   "Genetic Data": [
-    "Genetic Test Results (e.g., BRCA mutations, whole genome sequencing)",
-    "Family History of Genetic Conditions (e.g., Huntington’s disease)"
+    "Genetic Test Results",
+    "Family History of Genetic Conditions"
   ],
   "Symptom Data": [
-    "Symptom Logs (Specify condition/symptom: _____ )"
+    "Symptom Logs"
   ],
   "Treatment Data": [
-    "Treatment History (e.g., surgeries, therapies)",
-    "Treatment Outcomes (e.g., efficacy, side effects)"
+    "Treatment History",
+    "Treatment Outcomes"
   ],
   "Lab Test Data": [
-    "Blood Test Results (Specify markers: _____ )",
+    "Blood Test Results",
     "Urinalysis Results",
-    "Imaging Data (e.g., x-rays, MRIs, CT scans)",
+    "Imaging Data",
     "Biopsy Results",
-    "Other Diagnostic Test Results (Specify: _____ )",
-    "Employment Status",
-    "Socioeconomic Status (e.g., income level, education level)"
+    "Other Diagnostic Test Results"
   ],
   "Device/Monitoring Data": [
-    "Wearable Device Data (e.g., Fitbit, Apple Watch)",
+    "Wearable Device Data",
     "Continuous Glucose Monitoring Data",
     "Sleep Tracking Data",
-    "Heart Rate Variability (HRV)",
-    "Blood Oxygen Levels (SpO2)",
+    "Heart Rate Variability",
+    "Blood Oxygen Levels",
     "Recreational Drug Use",
     "Physical Activity Levels"
   ],
   "Lifestyle Data": [
     "Diet/Nutrition Patterns",
     "Exercise Habits",
-    "Environmental Factors (e.g., air quality, exposure to toxins)"
+    "Environmental Factors"
   ],
   "Rare Disease": [
-    "Rare Disease Diagnosis (Specify: _____ )",
-    "Known Disease Mutations (if applicable)",
+    "Rare Disease Diagnosis",
+    "Known Disease Mutations",
     "Symptoms Unique to Rare Disease"
   ]
 }
