@@ -98,4 +98,29 @@ export default class EthereumRpc {
       return error as undefined;
     }
   }
+
+  async transferERC20(
+    paymentReceiverAddress: string,
+    amount: string
+  ): Promise<string> {
+    try {
+      const tokenAddress = "0x69FB88CC868e1bf99C88c2491c15d877086d6802"
+      const provider = new ethers.BrowserProvider(this.provider as IProvider);
+      const signer = await provider.getSigner();
+
+      const erc20Abi = [
+        "function transfer(address recipient, uint256 amount) public returns (bool)",
+      ];
+      const tokenContract = new ethers.Contract(tokenAddress, erc20Abi, signer);
+
+      const amountInWei = ethers.parseUnits(amount, 18);
+
+      const tx = await tokenContract.transfer(paymentReceiverAddress, amountInWei);
+      const receipt = await tx.wait();
+
+      return `Transaction successful: ${receipt.transactionHash}`;
+    } catch (error: unknown) {
+      return `Error: ${error}`;
+    }
+  }
 }
