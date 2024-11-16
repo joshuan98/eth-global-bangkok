@@ -405,19 +405,6 @@ function Login() {
             element={
               provider ? (
                 <Dashboard
-                  getUserInfo={getUserInfo}
-                  authenticateUser={authenticateUser}
-                  getAccounts={getAccounts}
-                  getBalance={getBalance}
-                  addChain={addChain}
-                  switchChain={switchChain}
-                  signMessage={signMessage}
-                  sendTransaction={sendTransaction}
-                  registerPasskey={registerPasskey}
-                  listAllPasskeys={listAllPasskeys}
-                  showCheckout={showCheckout}
-                  showWalletUI={showWalletUI}
-                  showWalletScanner={showWalletScanner}
                   logout={logout}
                 />
               ) : (
