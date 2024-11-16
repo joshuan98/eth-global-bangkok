@@ -8,10 +8,11 @@ import data from './data.json';
 import Loading from "./Loading"; // Import the Loading component
 
 interface SelectProps {
+  transferERC20Specific: () => Promise<void>
   logout: () => Promise<void>;
 }
 
-const Select: React.FC<SelectProps> = ({ logout }) => {
+const Select: React.FC<SelectProps> = ({ transferERC20Specific, logout }) => {
   const [loading, setLoading] = useState(false); // Loading state for payment submission
   const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>({});
   const [openDialog, setOpenDialog] = useState(false);
@@ -40,14 +41,14 @@ const Select: React.FC<SelectProps> = ({ logout }) => {
     setOpenDialog(false); // Close the dialog
   };
 
-  const handlePaymentSubmit = () => {
+  const handlePaymentSubmit = async () => {
     setLoading(true); // Start loading
-    setTimeout(() => {
-      setLoading(false); // Stop loading after 3 seconds
-      setOpenDialog(false); // Close dialog after payment submission
-      console.log("Payment processed successfully.");
-      navigate("/report");
-    }, 3000); // 3 seconds delay for loading
+    await transferERC20Specific()
+    // setTimeout(() => {
+    setLoading(false); // Stop loading after 3 seconds
+    setOpenDialog(false); // Close dialog after payment submission
+    navigate("/report");
+    // }, 3000); // 3 seconds delay for loading
   };
 
   if (loading) {
