@@ -197,7 +197,7 @@ const Report: React.FC<ReportProps> = ({ logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '370px', // Positioning the button near the bottom of the page
+          bottom: '330px', // Positioning the button near the bottom of the page
           left: '50%',
           transform: 'translateX(-50%)', // Center horizontally
           zIndex: 1,
@@ -206,7 +206,7 @@ const Report: React.FC<ReportProps> = ({ logout }) => {
         <Button
           variant="contained"
           sx={{
-            height: '100px',
+            height: '90px',
             width: '350px',
             backgroundColor: '#651FFF', // Purple background color
             color: '#fff', // White text color

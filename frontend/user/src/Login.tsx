@@ -22,7 +22,7 @@ import "./App.css";
 import Fields1 from "./Fields1";
 import Fields2 from "./Fields2";
 import Loading from "./Loading";
-import Upload from "./upload";
+import Upload from "./Upload";
 import { shouldSupportPasskey } from "./utils";
 import Wallet from "./Wallet";
 
@@ -309,7 +309,7 @@ function Login() {
   }
 
   const receive = async () => {
-    await redeemFromPaymentReceiverSpecific("1");
+    await redeemFromPaymentReceiverSpecific("2307.59");
   };
 
   const loginView = (

@@ -133,7 +133,7 @@ const Fields2: React.FC<Fields2Props> = ({ logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '510px', // Position from the bottom
+          bottom: '450px', // Position from the bottom
           right: '32px', // Position from the right
           zIndex: 2,
         }}
@@ -163,7 +163,7 @@ const Fields2: React.FC<Fields2Props> = ({ logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '510px', // Position from the bottom
+          bottom: '450px', // Position from the bottom
           left: '50px', // Position from the left
           zIndex: 2,
         }}

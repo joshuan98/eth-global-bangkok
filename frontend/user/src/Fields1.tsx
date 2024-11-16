@@ -132,7 +132,7 @@ const Fields1: React.FC<Fields1Props> = ({ logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '510px', // Position from the bottom
+          bottom: '450px', // Position from the bottom
           right: '32px', // Position from the right
           zIndex: 2,
         }}

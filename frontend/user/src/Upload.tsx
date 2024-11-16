@@ -131,7 +131,7 @@ const Upload: React.FC<UploadProps> = ({ logout }) => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: '190px', // Positioning the button near the bottom of the page
+          bottom: '180px', // Positioning the button near the bottom of the page
           left: '50%',
           transform: 'translateX(-50%)', // Center horizontally
           zIndex: 1,
