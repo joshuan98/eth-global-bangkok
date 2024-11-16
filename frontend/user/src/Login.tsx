@@ -31,14 +31,14 @@ const verifier = "w3a-sfa-web-google";
 const clientId = "BPi5PB_UiIZ-cPz1GtV5i1I2iOSOHuimiXBI0e-Oe_u6X3oVAbCiAZOTEBtTXw4tsluTITPqA8zMsfxIKMjiqNQ"; // get from https://dashboard.web3auth.io
 
 const chainConfig = {
-  chainId: "0x89", // Polygon mainnet chain ID
-  displayName: "Polygon Mainnet",
+  chainId: "80002", // Polygon mainnet chain ID
+  displayName: "Polygon A",
   chainNamespace: CHAIN_NAMESPACES.EIP155,
   tickerName: "Polygon",
   ticker: "MATIC",
   decimals: 18,
-  rpcTarget: "https://rpc.ankr.com/polygon", // RPC endpoint for Polygon
-  blockExplorerUrl: "https://polygonscan.com",
+  rpcTarget: "https://polygon-amoy.infura.io/v3/", // RPC endpoint for Polygon
+  blockExplorerUrl: "https://amoy.polygonscan.com",
   logo: "https://cryptologos.cc/logos/polygon-matic-logo.png",
 };
 
