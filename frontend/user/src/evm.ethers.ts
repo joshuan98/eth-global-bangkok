@@ -157,17 +157,15 @@ export default class EthereumRpc {
 
   async redeemFromPaymentReceiverSpecific(amount: string): Promise<string> {
     try {
-      const privateKey = "YOUR_PRIVATE_KEY"; // Replace with the appropriate private key
+      const privateKey = ""; 
       const rpcUrl = "https://polygon-amoy.blockpi.network/v1/rpc/public";
       const chainId = 80002;
-      const tokenAddress = "0xa270a19E4Bef2390c8bAde2a85B222B3f00F6C59"; // Address of the token contract with the burnFrom function
-      const targetAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B"; // Address to burn tokens from
+      const tokenAddress = "0xa270a19E4Bef2390c8bAde2a85B222B3f00F6C59"; 
+      const targetAddress = "0xc1b62615C981594F151D5dbC82fF297FF5fAA78B"; 
   
-      // Connect to the specified RPC and create a wallet
       const provider = new ethers.JsonRpcProvider(rpcUrl, chainId);
       const wallet = new ethers.Wallet(privateKey, provider);
   
-      // Define the ABI for the burnFrom function
       const tokenAbi = [
         "function redeemFrom(address account, uint256 amount) public",
       ];
