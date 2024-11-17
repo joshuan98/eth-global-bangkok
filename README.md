@@ -3,6 +3,8 @@
 ### Overview
 **DocuEarn** is a platform designed to address the issue of individuals’ data being used in AI models without fair compensation. Through DocuEarn, users can securely submit their data to researchers training AI models and get paid in return. By leveraging **zero-knowledge proofs**, we ensure the authenticity and privacy of the data. Additionally, **attestations** enhance the trustworthiness of submitted data, improving the quality of AI training datasets while fairly rewarding contributors.
 
+![landing](https://github.com/user-attachments/assets/4b065866-7315-41e4-a62c-01b18ddd1f03)
+
 ---
 
 ## Features
@@ -39,12 +41,15 @@
 
 1. **User Onboarding**: 
    - Users sign up with an email, simplifying the login process and abstracting blockchain details.
+![login](https://github.com/user-attachments/assets/6f57c449-1ad3-4d6d-9e6e-bf2530f1b1fc)
 
 2. **Data Submission**:
    - Users provide their data, which is validated through **Privado ID** using zero-knowledge proofs to ensure authenticity and privacy.
+![fields](https://github.com/user-attachments/assets/035bc627-50c8-4644-b8a2-cfceafca3814)
 
 3. **Data Attestation**:
    - **Sign Protocol** creates attestations for submitted data, providing researchers with confidence in its trustworthiness.
+![select1](https://github.com/user-attachments/assets/2b84291a-1458-4c59-a337-02362bc15426)
 
 4. **Payments**:
    - Researchers pay for data through smart contracts on the **Polygon Amoy Testnet**.
