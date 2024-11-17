@@ -20,7 +20,7 @@ const Wallet: React.FC<WalletProps> = ({ receive, logout }) => {
 
   const handleClick = () => {
     setLoading(true); // Start loading
-    // receive();
+    receive();
 
     setTimeout(() => {
       setLoading(false); // Stop loading after 5 seconds
