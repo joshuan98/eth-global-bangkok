@@ -40,7 +40,7 @@
 ## How It Works
 
 1. **User Onboarding**: 
-   - Users sign up with an email, simplifying the login process and abstracting blockchain details.
+   - Users sign up with an email via **Web3Auth**, simplifying the login process and abstracting blockchain details.
 ![login](https://github.com/user-attachments/assets/6f57c449-1ad3-4d6d-9e6e-bf2530f1b1fc)
 
 2. **Data Submission**:
@@ -54,6 +54,7 @@
 4. **Payments**:
    - Researchers pay for data through smart contracts on the **Polygon Amoy Testnet**.
    - Payments in **USDC** are automatically converted to USD and sent directly to users’ bank accounts.
+![wallet](https://github.com/user-attachments/assets/1bf14e93-acc4-4cbb-8418-fe7820367515)
 
 
 
