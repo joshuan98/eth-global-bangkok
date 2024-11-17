@@ -1,5 +1,7 @@
 # DocuEarn
 Project Video Link: https://youtu.be/1lJ7hA639BU?si=wVyQzMfrZmmCmgAt
+Project Slide Link: https://www.canva.com/design/DAGWqQmUbpg/2NVZ7KvTRkpfnmuoItOiEQ/view?utm_content=DAGWqQmUbpg&utm_campaign=designshare&utm_medium=link&utm_source=editor
+
 
 ### Overview
 **DocuEarn** is a platform designed to address the issue of individuals’ data being used in AI models without fair compensation. Through DocuEarn, users can securely submit their data to researchers training AI models and get paid in return. By leveraging **zero-knowledge proofs**, we ensure the authenticity and privacy of the data. Additionally, **attestations** enhance the trustworthiness of submitted data, improving the quality of AI training datasets while fairly rewarding contributors.
