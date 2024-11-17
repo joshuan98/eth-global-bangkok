@@ -46,6 +46,7 @@
 2. **Data Submission**:
    - Users provide their data, which is validated through **Privado ID** using zero-knowledge proofs to ensure authenticity and privacy.
 ![fields](https://github.com/user-attachments/assets/035bc627-50c8-4644-b8a2-cfceafca3814)
+![photo_6181231712118357532_y](https://github.com/user-attachments/assets/096e3473-d879-4c2b-887c-2621ae8fa349)
 
 3. **Data Attestation**:
    - **Sign Protocol** creates attestations for submitted data, providing researchers with confidence in its trustworthiness.
