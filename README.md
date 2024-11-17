@@ -1,6 +1,7 @@
 # DocuEarn
-Project Video Link: https://youtu.be/1lJ7hA639BU?si=wVyQzMfrZmmCmgAt
-Project Slide Link: https://www.canva.com/design/DAGWqQmUbpg/2NVZ7KvTRkpfnmuoItOiEQ/view?utm_content=DAGWqQmUbpg&utm_campaign=designshare&utm_medium=link&utm_source=editor
+**Project Video Link:** https://youtu.be/1lJ7hA639BU?si=wVyQzMfrZmmCmgAt
+
+**Project Slide Link:** https://www.canva.com/design/DAGWqQmUbpg/2NVZ7KvTRkpfnmuoItOiEQ/view?utm_content=DAGWqQmUbpg&utm_campaign=designshare&utm_medium=link&utm_source=editor
 
 
 ### Overview
