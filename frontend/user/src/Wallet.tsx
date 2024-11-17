@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
+import axios from 'axios';
 import React, { useState } from "react";
 import Lottie from 'react-lottie-player';
 import { useNavigate } from "react-router-dom";
@@ -18,9 +19,75 @@ const Wallet: React.FC<WalletProps> = ({ receive, logout }) => {
   const [showSuccess, setShowSuccess] = useState(false); // State to control success display
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  // Circle API configuration
+  const API_BASE_URL = 'https://api-sandbox.circle.com/v1';
+  const API_KEY = "";
+
+  const handleClick = async () => {
     setLoading(true); // Start loading
     receive();
+
+    try {// Step 1: Link Bank Account
+      const bankAccountResponse = await axios.post(
+        `${API_BASE_URL}/businessAccount/banks/wires`,
+        {
+          billingDetails: {
+            name: 'Satoshi Nakamoto',
+            city: 'Boston',
+            country: 'US',
+            line1: '100 Money Street',
+            district: 'MA',
+            postalCode: '01234',
+          },
+          bankAddress: {
+            bankName: 'WELLS FARGO BANK, NA',
+            city: 'SAN FRANCISCO',
+            country: 'US',
+            line1: '100 Money Street',
+            district: 'CA',
+          },
+          idempotencyKey: 'unique-key-' + Date.now(),
+          accountNumber: '12340010',
+          routingNumber: '121000248',
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        }
+      );
+
+      const bankAccountId = bankAccountResponse.data.data.id;
+      console.log('Bank Account Linked:', bankAccountResponse.data);
+
+      // Step 2: Send Payout
+      const payoutResponse = await axios.post(
+        `${API_BASE_URL}/businessAccount/payouts`,
+        {
+          destination: {
+            type: 'wire',
+            id: bankAccountId,
+          },
+          amount: {
+            currency: 'USD',
+            amount: '1.00', // Adjust the amount as needed
+          },
+          idempotencyKey: 'unique-key-' + Date.now(),
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        }
+      );
+
+      console.log('Payout Sent:', payoutResponse.data);
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error (e.g., show an error message to the user)
+    }
 
     setTimeout(() => {
       setLoading(false); // Stop loading after 5 seconds
